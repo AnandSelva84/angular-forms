@@ -1,0 +1,508 @@
+<div class="">
+    <div class="row">
+        <div class="card" style="width: 20rem;  margin-bottom: 50px">
+            <img class="card-img-top" src="/assets/images/LACare-Logo.png" height="100" alt="Card image cap">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 sidenav">
+            <h5 class="text-center">CONTRACT
+                <br> PROVIDER</h5>
+            <hr/>
+            <table>
+                <tr [ngClass]="{'badge-custom' : demoPanelValueChange}">
+                    <td class="text-center">
+                        <a (click)="scrollTo('demographicsPanel')" style="cursor: pointer" id="demoLink">
+                            <h6 class="text"> DEMOGRAPHICS
+                            </h6>
+                        </a>
+                    </td>
+
+                    <td>
+                        <span [class.badge]="contractPhysicianForm.controls.demographics.valid" [ngClass]="{'valid' : contractPhysicianForm.controls.demographics.valid,
+                            'badge invalid' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}">
+                        </span>
+                    </td>
+                </tr>
+                <tr [ngClass]="{'badge-custom' : cpPanelValueChange}">
+                    <td class="text-center">
+                        <a (click)="scrollTo('cpPanel')" style="cursor: pointer">
+                            <h6 class="text"> CONT. PARTNER
+                            </h6>
+                        </a>
+                    </td>
+                    <td>
+                        <span [class.badge]="contractPhysicianForm.controls.contractedPartners.valid" [ngClass]="{'valid' : contractPhysicianForm.controls.contractedPartners.valid,
+                            'badge  invalid' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}">
+                        </span>
+
+                    </td>
+                </tr>
+                <tr [ngClass]="{'badge-custom' : licencePanelValueChange}">
+                    <td class="text-center">
+                        <a (click)="scrollTo('licencePanel')" style="cursor: pointer">
+                            <h6 class="text">LICENSING
+                            </h6>
+                        </a>
+                    </td>
+                    <td>
+                        <span [class.badge]="contractPhysicianForm.controls.licensing.valid" [ngClass]="{'valid' : contractPhysicianForm.controls.licensing.valid,
+                            'badge  invalid' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.dirty) && contractPhysicianForm.controls.licensing.invalid}">
+                        </span>
+                    </td>
+                </tr>
+                <tr [ngClass]="{'badge-custom' : locationPanelValueChange}">
+                    <td class="text-center">
+                        <a (click)="scrollTo('locationPanel')" style="cursor: pointer">
+                            <h6 class="text">LOCATIONS
+                            </h6>
+                        </a>
+                    </td>
+                    <td>
+                        <span [class.badge]="contractPhysicianForm.controls.locations.valid || contractPhysicianForm.controls.locations.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.locations.valid,
+                            'invalid' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}">
+                        </span>
+                    </td>
+                </tr>
+            </table>
+
+            <hr/>
+            <br>
+            <br>
+            <br>
+            <!-- <button class="btn btn-outline-rounded btn-default" style="border-radius: 12px;">
+                <span class="glyphicon glyphicon-chevron-left"></span> Back</button> -->
+        </div>
+
+        <div class="col-9 main">
+            <div>
+                <form [formGroup]="contractPhysicianForm">
+                    <div>
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div formGroupName="demographics" class="panel" style="padding-top: 0px" id="demographicsPanel">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h3>
+                                        <a class="collapsed badge" data-toggle="collapse" data-parent="#accordion" href="#demoPanelinfo" aria-expanded="true" aria-controls="demoPanelinfo"
+                                            (click)="togglePanel('demo')" style="text-decoration: none">
+                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !demoPanelClicked, 'glyphicon-chevron-up' : demoPanelClicked}"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;&nbsp;DEMOGRAPHICS
+                                    </h3>
+                                </div>
+                                <div id="demoPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne" style="padding-left:100px;">
+                                    <div class="panel-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-3">
+                                                <label for="inputFname">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">FIRST NAME*</h5>
+                                                </label>
+                                                <input type="text" class="form-control" id="inputFname" placeholder="" formControlName="firstName">
+                                                <em *ngIf="firstnameCtrl.invalid && firstnameCtrl.dirty">Alpha only</em>
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label for="inputMname">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">MIDDLE NAME</h5>
+                                                </label>
+                                                <input type="text" class="form-control" id="inputMname" placeholder="" formControlName="middleName">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputLName">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">LAST NAME*</h5>
+                                                </label>
+                                                <input type="text" class="form-control" id="inputLname" placeholder="" formControlName="lastName">
+                                                <em *ngIf="lastnameCtrl.invalid && lastnameCtrl.dirty">Alpha only</em>
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <label for="inputSuffix">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">SUFFIX</h5>
+                                                </label>
+                                                <input type="text" class="form-control" id="inputSuff" placeholder="" formControlName="suffixName">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputAlias">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">ALIAS NAME</h5>
+                                                </label>
+                                                <input type="text" class="form-control" id="inputAlias" placeholder="" formControlName="aliasName">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputdob">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">DATE OF BIRTH*</h5>
+                                                </label>
+                                                <input type="date" class="form-control" id="inputdob" formControlName="dateOfBirth">
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="inputgndr">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">GENDER*</h5>
+                                                </label>
+                                                <div class="form-control btn-group" role="group" style="border:0px;padding: 0px;background-color: transparent">
+                                                    <button type="button" class="btn" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px" [ngClass]="{'btn-success': male}"
+                                                        (click)="toggleGender()">MALE</button>
+                                                    <button type="button" class="btn" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px" [ngClass]="{'btn-success': !male}"
+                                                        (click)="toggleGender()">FEMALE</button>
+                                                </div>
+                                                <div>
+                                                    <input type="text" [hidden]="true" class="form-control" [value]="gender" formControlName="genderType">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div formArrayName="contractedPartners" class="panel" id="cpPanel">
+                                <div class="panel-heading" role="tab" id="headingFour">
+                                    <h3>
+                                        <a class="collapsed badge" data-toggle="collapse" data-parent="#accordion" href="#cpPanelinfo" aria-expanded="false" aria-controls="cpPanelinfo"
+                                            (click)="togglePanel('cp')" style="text-decoration: none">
+                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !cpPanelClicked, 'glyphicon-chevron-up' : cpPanelClicked}"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;&nbsp;CONTRACTED PARTNER
+                                    </h3>
+                                </div>
+                                <div id="cpPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingFour" style="padding-left: 100px">
+                                    <div class="panel-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-8">
+                                                <label for="inputPpg">
+                                                    <h4 style="font-size: 15px">CONTRACTED PARTNER*</h4>
+                                                </label>
+
+                                                <div *ngFor="let contractedPartner of contractPhysicianForm.controls.contractedPartners.controls; let i=index">
+                                                    <div class="row" [formGroupName]="i" style="padding-top: 5px;">
+                                                        <div class="col-6">
+                                                            <select size="1" class="form-control" id="inputphysDegree" formControlName="contractedPartner">
+                                                                <option *ngFor="let cp of contractedPartners" [value]="cp.value">{{cp.text}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-2" style="padding-left: 0px;">
+                                                            <span *ngIf="i > 0">
+                                                                <button type="button" class="btn btn-danger btn-sm" style="border-radius:100%" (click)="removeContractedPartner(i)">
+                                                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <button type="button" class="btn btn-default btn-sm" style="border-radius:100%" (click)="addContractedPartner()">
+                                                <span class="glyphicon glyphicon-plus-sign" style="padding-top: 5px"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div formGroupName="licensing" class="panel" id="licencePanel">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h3>
+                                        <a class="collapsed badge" data-toggle="collapse" data-parent="#accordion" href="#licensePanelinfo" aria-expanded="false" aria-controls="licensePanelinfo"
+                                            (click)="togglePanel('licence')" style="text-decoration: none">
+                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !licencePanelClicked, 'glyphicon-chevron-up' : licencePanelClicked}"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;&nbsp;LICENSING
+                                    </h3>
+                                </div>
+                                <div id="licensePanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo" style="padding-left: 100px">
+                                    <div class="panel-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-4">
+                                                <label for="inputNpinum">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">NPI NUMBER*</h5>
+                                                </label>
+                                                <input type="text" maxlength="10" pattern="\d*" class="form-control" id="inputNpinum" placeholder="" formControlName="npiNumber">
+                                                <em *ngIf="npiCtrl.invalid && npiCtrl.dirty">10 digit number only</em>
+                                            </div>
+
+                                            <div class="form-group col-4" item-width="180px">
+                                                <label for="inputLnum">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">LICENSE NUMBER*</h5>
+                                                </label>
+                                                <input type="text" pattern="\d*" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber">
+                                                <em *ngIf="licenceCtrl.invalid && licenceCtrl.dirty">Numbers only</em>
+                                            </div>
+                                            <div class="form-group col-4" item-width="180px">
+                                                <label for="inputLnum">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">DEA NUMBER*</h5>
+                                                </label>
+                                                <input type="text" maxlength="9" class="form-control" id="inputLnum" placeholder="" formControlName="deaNumber">
+                                                <em *ngIf="deaCtrl.invalid && deaCtrl.dirty">Start with 2 letter and followed by 7 digit number only</em>
+                                            </div>
+                                        </div>
+                                        <!-- LIC NUMBER-->
+                                        <div class="form-row">
+                                            <div class="form-group col-4">
+                                                <label for="inputDegr">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">DEGREE*</h5>
+                                                </label>
+                                                <select size="1" class="form-control" id="inputphysDegree" item-width="180px" item-height="180px" item-render-buffer="150px"
+                                                    formControlName="degreeName">
+                                                    <option *ngFor="let degree of degrees" value="degree.value">{{degree.text}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-4">
+                                                <label for="inputTxc">
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">TAXANOMY CODE*</h5>
+                                                </label>
+                                                <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="taxanomyCode">
+                                                    <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.text}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-12">
+                                                <label for="inputBtAffhos">
+                                                    <h4 style="font-size: 15px">DESCRIPTION</h4>
+                                                </label>
+                                                <textarea rows="4" class="form-control" disabled id="inputBtAffhos" placeholder="" formControlName="description"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel" id="locationPanel">
+                                <div class="panel-heading" role="tab" id="headingThree">
+                                    <h3>
+                                        <a class="collapsed badge" data-toggle="collapse" data-parent="#accordion" href="#locationPanelinfo" aria-expanded="false" aria-controls="locationPanelinfo"
+                                            (click)="togglePanel('location')" style="text-decoration: none">
+                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !locationPanelClicked, 'glyphicon-chevron-up' : locationPanelClicked}"></i>
+                                        </a>&nbsp;&nbsp;&nbsp;&nbsp;LOCATION(S)
+                                    </h3>
+                                </div>
+                                <div id="locationPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingThree" style="padding-left: 100px">
+                                    <div class="panel-body" style="padding: 0px 0px 0px 15px">
+                                        <div>
+                                            <div formArrayName="locations">
+                                                <div class="" *ngFor="let location of contractPhysicianForm.controls.locations.controls; let i=index">
+                                                    <div class="row" [formGroupName]="i">
+                                                        <div class="row col-12">
+                                                            <div *ngIf="i == 0" class="col-2">
+                                                                <h6 style="font: 15px;font: ArialMT, Regular;">LOCATION TYPE</h6>
+                                                                <div class="form-row">
+                                                                    <div class="form-group">
+                                                                        <button class="btn btn-default" disabled style="font-family: Arial, Helvetica, sans-serif;font-size: 15px;">Practice</button>
+                                                                        <input type="text" [hidden]="true" class="form-control" formControlName="locationType">
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div *ngIf="i > 0" class="col-2">
+                                                                <h6 style="font: 15px;font: ArialMT, Regular;">LOCATION TYPE</h6>
+                                                                <div class="form-row">
+                                                                    <div class="form-group">
+                                                                        <select size="1" class="form-control" formControlName="locationType">
+                                                                            <option class="placeholder" selected disabled value="">Select</option>
+                                                                            <option *ngFor="let locationType of locationTypes" [value]="locationType.value">{{locationType.text}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <span style="padding-left: 5px">
+                                                                        <button type="button" class="btn btn-danger btn-sm" style="border-radius:100%" (click)="removeLocation(i)">
+                                                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                                                        </button>
+                                                                    </span>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="col-10 vertical">
+                                                                <div *ngIf="i > 0">
+                                                                    <hr/>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-6">
+                                                                        <label for="inputAddress">
+                                                                            <h4 style="font-size: 15px">ADDRESS*</h4>
+                                                                        </label>
+                                                                        <input type="text" maxlength="10" class="form-control" id="inputAddress" placeholder="" formControlName="address">
+                                                                        <em *ngIf="addressCtrl.invalid && addressCtrl.dirty">Required</em>
+                                                                    </div>
+
+                                                                    <div class="form-group col-3">
+                                                                        <label for="inputSuite">
+                                                                            <h4 style="font-size: 15px">SUITE</h4>
+                                                                        </label>
+                                                                        <input type="text" maxlength="3" class="form-control" id="inputSuite" placeholder="" formControlName="suite">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-6">
+                                                                        <label for="inputCity">
+                                                                            <h4 style="font-size: 15px">CITY*</h4>
+                                                                        </label>
+                                                                        <input type="text" maxlength="10" class="form-control" id="inputCity" placeholder="" formControlName="city">
+                                                                    </div>
+
+                                                                    <div class="form-group col-3">
+                                                                        <label for="inputSTate">
+                                                                            <h4 style="font-size: 15px">STATE*</h4>
+                                                                        </label>
+                                                                        <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="state">
+                                                                            <option *ngFor="let state of states" [value]="state.value">{{state.text}}</option>
+                                                                        </select>
+
+                                                                    </div>
+
+
+                                                                    <div class="form-group col-3">
+                                                                        <label for="inputZip">
+                                                                            <h4 style="font-size: 15px">ZIP*</h4>
+                                                                        </label>
+                                                                        <input type="number" maxlength="5" class="form-control" id="inputZip" placeholder="" formControlName="zipcode">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-6">
+                                                                        <label for="inputPhon">
+                                                                            <h4 style="font-size: 15px">PHONE*</h4>
+                                                                        </label>
+                                                                        <input type="tel" maxlength="10" class="form-control" id="inputPhon" placeholder="" formControlName="phone">
+                                                                    </div>
+
+                                                                    <div class="form-group col-6">
+                                                                        <label for="inputFax">
+                                                                            <h4 style="font-size: 15px">FAX</h4>
+                                                                        </label>
+                                                                        <input type="tel" class="form-control" id="inputFax" placeholder="" formControlName="fax">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-6">
+                                                                        <label for="inputMail">
+                                                                            <h4 style="font-size: 15px">EMAIL</h4>
+                                                                        </label>
+                                                                        <input type="email" class="form-control" id="inputMail" placeholder="" formControlName="email">
+                                                                    </div>
+                                                                </div>
+                                                                <div *ngIf="i == 0">
+                                                                    <br/>
+                                                                    <br/>
+                                                                    <div formArrayName="officeHours">
+                                                                        <div class="form-row">
+                                                                            <div class="col-2">
+                                                                                <label>
+                                                                                    <h4 style="font-size: 15px">OFFICE HOURS*</h4>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="col-2">
+                                                                                <label>
+                                                                                    <h4 style="font-size: 15px">OPEN*</h4>
+                                                                                </label>
+                                                                            </div>
+
+                                                                            <div class="col-2">
+                                                                                <label>
+                                                                                    <h4 style="font-size: 15px">CLOSE*</h4>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div *ngFor="let officeHour of getOfficeHour(location); let j=index">
+                                                                            <div class="form-row" [formGroupName]="j" style="padding-top: 2px;">
+                                                                                <div class="col-2">
+                                                                                    <select size="1" class="form-control" formControlName="day">
+                                                                                        <option *ngFor="let day of days" [value]="day.value">{{day.text}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div class="col-2">
+                                                                                    <select size="1" class="form-control" formControlName="open">
+                                                                                        <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <strong> - </strong>
+                                                                                </div>
+                                                                                <div class="col-2">
+                                                                                    <select size="1" class="form-control" formControlName="close">
+                                                                                        <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div *ngIf="j > 0" class="col-1" style="padding-left: 0px;">
+                                                                                    <span>
+                                                                                        <button type="button" class="btn btn-danger btn-sm" style="border-radius:100%" (click)="removeOfficeHour(i)">
+                                                                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                                                                        </button>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                    <div class="form-row" style="padding-top: 10px">
+                                                                        <button type="button" class="btn btn-default btn-sm" style="border-radius:100%" (click)="addOfficeHour(i)">
+                                                                            <span class="glyphicon glyphicon-plus-sign" style="padding-top: 5px"></span>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <br/>
+                                                                    <br/>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="inputPanstat">
+                                                                                <h4 style="font-size: 15px">AGE RESTRICTION*</h4>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-2">
+                                                                            <input type="number" class="form-control" placeholder="MIN" formControlName="minAge">
+                                                                        </div>
+                                                                        <div class="form-group col-md-2">
+                                                                            <input type="number" class="form-control" placeholder="MAX" formControlName="maxAge">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br/>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-4">
+                                                                            <label for="inputMail">
+                                                                                <h4 style="font-size: 15px">PRACTICE TYPE*</h4>
+                                                                            </label>
+                                                                            <select size="1" class="form-control" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType">
+                                                                                <option *ngFor="let pt of practiceTypes" [value]="pt.value">{{pt.text}}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding: 15px">
+                                                <div class="col-2">
+                                                    <button type="button" class="btn btn-default btn-sm" style="border-radius: 25px" (click)="addLocation()">
+                                                        <i class="glyphicon glyphicon-plus-sign" style="top: 5px"></i>
+                                                        <span style="font-size: 15px;">New Location</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 text-center" style="padding-bottom: 25px;left:100px">
+            <button type="Submit" (click)="onSubmit()" [disabled]="contractPhysicianForm.invalid" class="btn btn-lg" [class.btn-success]="contractPhysicianForm.valid"
+                [ngClass]="{'btn-success' : contractPhysicianForm.valid}" style="border-radius: 50px;">
+                <span class="badge" style="border-radius: 100%;">
+                    <span class="fa fa-1x glyphicon glyphicon-ok"></span>
+                </span> &nbsp;Submit</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+h1 {
+    font-weight: bold;
+    color: gray;
+    font-size: 32px;
+  }
+  .panel.disabled .panel-body {
+    position: relative;
+}
+.panel.disabled .panel-body :after,
+.panel.disabled .panel-disabled {
+    display:block;
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.6);
+    border-radius: 5px;
+}
+.panel-footer .checkbox {
+    margin: 0;
+} 
+    
+    
+    
+    /* .card {
+    border-radius: 0 !important;
+    border: 2 none;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+    margin-left: 1px;
+    margin-right: 1px;
+    height: 100px;
+    width: 500px;
+    margin-bottom: 15px;
+    }
+    
+      */
+    
+    /* .card-columns {
+    padding-top: 150px;
+    padding-left: 130px;
+    padding-right: 10px;
+    padding-bottom: auto;
+    } */
+
+  
